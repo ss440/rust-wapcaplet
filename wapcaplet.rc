@@ -41,6 +41,11 @@ impl Drop for LwcString {
     }
 }
 
+impl Eq for LwcString {
+#[inline]
+    fn eq(&self, other: &LwcString) -> bool { self.string == other.string }
+}
+
 #[fixed_stack_segment]
 pub fn from_rust_string(s: &str) -> LwcString {
     unsafe {
